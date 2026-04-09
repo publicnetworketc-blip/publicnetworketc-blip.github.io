@@ -106,6 +106,49 @@ display:block;
 </div>
 
 <p style="color:red;">⏳ Hurry! Offer ending soon</p>
+<script>
+const names = ["rahim2056","karim1920","junaid7063","sakib99","nayeemkdp","hasan582","abulhasan582"];
+const amounts = ["৳5200","৳8000","৳10000","৳15000"];
 
+function showNotification(){
+  let name = names[Math.floor(Math.random()*names.length)];
+  let amount = amounts[Math.floor(Math.random()*amounts.length)];
+
+  let div = document.createElement("div");
+  div.innerHTML = `💸 ${name} just claimed ${amount}`;
+
+  div.style.position = "fixed";
+  div.style.bottom = "20px";
+  div.style.left = "-300px";
+  div.style.background = "#111";
+  div.style.color = "#00ff99";
+  div.style.padding = "12px 20px";
+  div.style.borderRadius = "10px";
+  div.style.boxShadow = "0 0 10px rgba(0,255,150,0.5)";
+  div.style.fontSize = "14px";
+  div.style.transition = "0.5s";
+  div.style.zIndex = "9999";
+
+  document.body.appendChild(div);
+
+  // slide in
+  setTimeout(()=>{
+    div.style.left = "20px";
+  },100);
+
+  // hide
+  setTimeout(()=>{
+    div.style.left = "-300px";
+  },3000);
+
+  // remove
+  setTimeout(()=>{
+    div.remove();
+  },3500);
+}
+
+// repeat
+setInterval(showNotification, 5000);
+</script>
 </body>
 </html>
