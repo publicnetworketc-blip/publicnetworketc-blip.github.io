@@ -13,7 +13,6 @@ body{
   text-align:center;
 }
 
-/* HEADER */
 .header{
   background:linear-gradient(135deg,#00ffcc,#0099ff);
   padding:30px;
@@ -21,19 +20,6 @@ body{
   border-radius:20px;
 }
 
-.logo{font-size:26px;font-weight:bold;}
-
-.cta{
-  display:inline-block;
-  margin-top:10px;
-  padding:12px 25px;
-  background:black;
-  border-radius:30px;
-  color:white;
-  text-decoration:none;
-}
-
-/* DASHBOARD */
 .dashboard{
   margin:10px;
   padding:15px;
@@ -48,7 +34,15 @@ body{
   border-radius:10px;
 }
 
-/* GRID */
+button{
+  padding:8px 12px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  background:#00ff99;
+  font-weight:bold;
+}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -63,37 +57,10 @@ body{
   color:black;
   text-decoration:none;
   font-weight:bold;
-  transition:0.3s;
 }
 
-.btn:hover{
-  transform:scale(1.05);
-}
+.best{background:gold !important;}
 
-/* BEST LINK */
-.best{
-  background:gold !important;
-}
-
-/* ADS */
-.ads{
-  margin:10px;
-  padding:10px;
-  background:#ff0033;
-  border-radius:10px;
-}
-
-/* FILTER BUTTON */
-button{
-  padding:8px 12px;
-  margin:5px;
-  border:none;
-  border-radius:8px;
-  background:#00ff99;
-  font-weight:bold;
-}
-
-/* 🔥 SOCIAL PRO STYLE */
 .social{
   margin:15px;
   padding:20px;
@@ -101,19 +68,13 @@ button{
   border-radius:15px;
 }
 
-.social h3{
-  margin-bottom:10px;
-}
-
 .social-btn{
   display:block;
-  margin:8px 0;
+  margin:8px;
   padding:12px;
   border-radius:10px;
   color:white;
   text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
 }
 
 .wa{background:#25D366;}
@@ -122,36 +83,37 @@ button{
 .page{background:#4267B2;}
 .tk{background:#000;}
 
-.social-btn:hover{
-  transform:scale(1.05);
-  opacity:0.9;
+#adminPanel{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:black;
+  padding:20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
-  <div class="logo" id="headline">🔥 Best Online Bonus Offers</div>
-  <a href="#links" class="cta">🚀 Claim Bonus</a>
+<h2 id="headline">🔥 Best Online Bonus Offers</h2>
 </div>
 
-<!-- DASHBOARD -->
 <div class="dashboard">
-  <div class="card">👆 Total Clicks: <span id="total">0</span></div>
-  <div class="card">🏆 Best Link: <span id="best">None</span></div>
+<div class="card">Clicks: <span id="total">0</span></div>
+<div class="card">Best: <span id="best">None</span></div>
+<div class="card">Earnings: $<span id="earn">0</span></div>
 </div>
 
-<!-- ADS -->
-<div id="ads" class="ads">🔥 Loading Offer...</div>
+<button onclick="openAdmin()">⚙️ Admin Panel</button>
 
 <!-- FILTER -->
-<div style="margin:10px;">
-  <button onclick="filterLinks('all')">All</button>
-  <button onclick="filterLinks('popular')">🔥 Popular</button>
-  <button onclick="filterLinks('new')">🆕 New</button>
-  <button onclick="filterLinks('hot')">💸 Hot</button>
+<div>
+<button onclick="filterLinks('all')">All</button>
+<button onclick="filterLinks('popular')">Popular</button>
+<button onclick="filterLinks('new')">New</button>
+<button onclick="filterLinks('hot')">Hot</button>
 </div>
 
 <!-- LINKS -->
@@ -159,9 +121,9 @@ button{
 
 <a class="btn popular" onclick="track('MCW')" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
 <a class="btn popular" onclick="track('Jeetbuzz')" href="https://jt19234.life/af/BYXru1fL/join">Jeetbuzz</a>
-<a class="btn hot" onclick="track('Khelaghor')" href="https://kg899992221aff.com/af/5yhsxzA8/join">Khelaghor</a>
-<a class="btn hot" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
-<a class="btn hot" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
+<a class="btn new" onclick="track('Khelaghor')" href="https://kg899992221aff.com/af/5yhsxzA8/join">Khelaghor</a>
+<a class="btn new" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
+<a class="btn new" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
 
 <a class="btn" onclick="track('8Mbet')" href="https://www.8mbets.net/bn-bd?aff=bb2ac8bfb3">8Mbet</a>
 <a class="btn hot" onclick="track('Mega Cricket')" href="https://crix8898822.com/af/C7W6cT8X/join">Mega Cricket</a>
@@ -176,72 +138,49 @@ button{
 <a class="btn" onclick="track('PBC88')" href="https://pbc888.club/af/U5JVzV88/join">PBC88</a>
 
 <a class="btn" onclick="track('Redbaji')" href="https://rbwelcome.com/af/JRG46KMS/join">Redbaji</a>
-<a class="btn hot" onclick="track('BetJDB')" href="https://betjdb.site/af/1LCosJYd/join">BetJDB</a>
+<a class="btn" onclick="track('BetJDB')" href="https://betjdb.site/af/1LCosJYd/join">BetJDB</a>
 <a class="btn new" onclick="track('Jeetbangla')" href="https://jeetbangla.co/af/d9Uy94s6/join">Jeetbangla</a>
-<a class="btn" onclick="track('Superbaji')" href="https://superbaji.fun/af/I1WV38Lv/join">Superbaji</a>
-<a class="btn hot" onclick="track('Heybaji')" href="https://heybaji.fun/af/v6rf50M7/join">Heybaji</a>
+<a class="btn hot" onclick="track('Superbaji')" href="https://superbaji.fun/af/I1WV38Lv/join">Superbaji</a>
+<a class="btn" onclick="track('Heybaji')" href="https://heybaji.fun/af/v6rf50M7/join">Heybaji</a>
 
 <a class="btn" onclick="track('Darazplay')" href="https://darazplay.fun/af/poO4Tj3H/join">Darazplay</a>
 <a class="btn" onclick="track('KV8')" href="https://kv8.online/af/77v2NiUA/join">KV8</a>
 <a class="btn hot" onclick="track('Tekkabuzz')" href="https://tb08p27aff2025.com/af/e393P3gY/join">Tekkabuzz</a>
 
-<a class="btn" onclick="track('7Star')" href="https://7starcasino.live/signup/V5tLAGrIhUAIi-iJ03PBNaa-4gwPoyX0R5Ihdfh--BU=">7Star</a>
+<a class="btn" onclick="track('7Star')" href="https://7starcasino.live/signup/...">7Star</a>
 <a class="btn" onclick="track('Mostplay')" href="https://mostplayipl.club/af/57wDvcOa/join">Mostplay</a>
 
 <a class="btn" onclick="track('Six6s')" href="https://6s03p14aff2025.com/af/8Iy6b1K8/join">Six6s</a>
 <a class="btn popular" onclick="track('Betvisa')" href="https://bv88visa.com/af/O2PV29mr/join">Betvisa</a>
 <a class="btn popular" onclick="track('Jeetwin')" href="https://jeetwinfun.com/af/2eenp13b/join">Jeetwin</a>
-<a class="btn" onclick="track('Baji10x')" href="https://www.baji10x.com/affiliate_code?affiliate_code=5XTnntVuNJ">Baji10x</a>
-<a class="btn" onclick="track('365Pari')" href="https://365pari.com/ref/587669416">365Pari</a>
 
-<a class="btn" onclick="track('Mamubaji')" href="https://www.mamubaji.co/bn-bd/register?aff=90538c578b">Mamubaji</a>
-<a class="btn" onclick="track('Club99')" href="http://www.club99bdt.com/Register/0231d2aeb4fca4b96169aee24c5c8f7567e42b1d031ef">Club99</a>
-<a class="btn" onclick="track('Wicket71')" href="https://upodx.wicket71bd.com/register.html">Wicket71</a>
-<a class="btn hot" onclick="track('Bagh')" href="https://bh05p12aff2025.com/af/E1e3Hv3d/join">Bagh</a>
-<a class="btn" onclick="track('4Six')" href="https://4six.com/m/#/?creation_code=1000011068">4Six</a>
-
-<a class="btn hot" onclick="track('Tkbazi')" href="https://tkbzi99999aff.com/af/bu1jOesM/join">Tkbazi</a>
-<a class="btn" onclick="track('Bajiplay88')" href="https://bajiplay88.com#/register?ref=AFF2261867E63A57">Bajiplay88</a>
-<a class="btn" onclick="track('Nagabaji')" href="https://nagabaji9.com/r/1UzN1ITMwADM">Nagabaji</a>
-<a class="btn" onclick="track('Winraj')" href="https://winraj.com/register?agent=6824ce12">Winraj</a>
-<a class="btn" onclick="track('Crownbd')" href="https://nazmasultana.crownbd.me/register.html">Crownbd</a>
-
-<a class="btn hot" onclick="track('Banglaplus88')" href="https://bnplus8999aff.com/af/qIo5EGu8/join">Banglaplus88</a>
-<a class="btn" onclick="track('Fencywin')" href="https://juwabd.com/af/38q9Hf9r/join">Fencywin</a>
-<a class="btn" onclick="track('Darazbaji')" href="https://darazbaji.com/player/signup.php?ref=AGT0022">Darazbaji</a>
-<a class="btn" onclick="track('RB777')" href="https://rb777.live/register?ref=LLCSPW">RB777</a>
 <a class="btn" onclick="track('Joywin')" href="https://jw88aff99999.com/af/CW7O4JF1">Joywin</a>
 
 </div>
 
 <!-- SOCIAL -->
 <div class="social">
-
 <h3>🚀 Join Our Community</h3>
 
-<a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" target="_blank" class="social-btn wa">
-💬 WhatsApp Channel
-</a>
-
-<a href="https://t.me/hotjackpoprotbd" target="_blank" class="social-btn tg">
-📢 Telegram Channel
-</a>
-
-<a href="https://www.facebook.com/groups/1264998368916954/?ref=share&mibextid=NSMWBT" target="_blank" class="social-btn fb">
-📘 Facebook Group
-</a>
-
-<a href="https://facebook.com/YOUR_PAGE" target="_blank" class="social-btn page">
-👍 Facebook Page
-</a>
-
-<a href="https://www.tiktok.com/@YOUR_ID" target="_blank" class="social-btn tk">
-🎵 TikTok
-</a>
+<a href="https://whatsapp.com/channel/YOUR_LINK" class="social-btn wa">WhatsApp</a>
+<a href="https://t.me/YOUR_CHANNEL" class="social-btn tg">Telegram</a>
+<a href="https://facebook.com/groups/YOUR_GROUP" class="social-btn fb">Facebook Group</a>
+<a href="https://facebook.com/YOUR_PAGE" class="social-btn page">Facebook Page</a>
+<a href="https://tiktok.com/@YOUR_ID" class="social-btn tk">TikTok</a>
 
 </div>
 
-<!-- JS -->
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+<h2>Admin Panel</h2>
+<p>Total: <span id="adminTotal">0</span></p>
+<p>Best: <span id="adminBest">None</span></p>
+<p>Earnings: $<span id="adminEarn">0</span></p>
+
+<button onclick="resetData()">Reset</button>
+<button onclick="closeAdmin()">Close</button>
+</div>
+
 <script>
 let data = JSON.parse(localStorage.getItem("clicks")) || {};
 
@@ -255,66 +194,53 @@ function track(name){
 function update(){
   let total=0,max=0,best="None";
 
-  document.querySelectorAll(".btn").forEach(btn=>btn.classList.remove("best"));
-
   for(let k in data){
     total+=data[k];
-    if(data[k]>max){
-      max=data[k];
-      best=k;
-    }
+    if(data[k]>max){max=data[k];best=k;}
   }
 
   document.getElementById("total").innerText=total;
   document.getElementById("best").innerText=best;
-
-  document.querySelectorAll(".btn").forEach(btn=>{
-    if(btn.innerText===best){
-      btn.classList.add("best");
-    }
-  });
+  document.getElementById("earn").innerText=(total*0.05).toFixed(2);
 }
 
-/* FILTER */
 function filterLinks(type){
-  let all = document.querySelectorAll(".btn");
-
-  all.forEach(btn=>{
-    btn.style.display = "block";
-
-    if(type !== "all"){
-      if(!btn.classList.contains(type)){
-        btn.style.display = "none";
-      }
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.style.display="block";
+    if(type!=="all" && !btn.classList.contains(type)){
+      btn.style.display="none";
     }
   });
 }
 
-/* ADS */
-const ads=[
-"🔥 Get 100% Bonus Today",
-"💸 Instant Withdraw Available",
-"🚀 Join & Earn Daily",
-"🎯 Limited Offer – Join Now"
-];
+function openAdmin(){
+  let pass=prompt("Password?");
+  if(pass==="1234"){
+    document.getElementById("adminPanel").style.display="block";
+    updateAdmin();
+  }
+}
 
-setInterval(()=>{
-  document.getElementById("ads").innerText=
-  ads[Math.floor(Math.random()*ads.length)];
-},3000);
+function closeAdmin(){
+  document.getElementById("adminPanel").style.display="none";
+}
 
-/* HEADLINE */
-const headlines=[
-"🔥 Best Online Bonus Offers",
-"💸 Trusted Earning Platforms",
-"🚀 Join Top Betting Sites",
-"🎯 Daily Bonus Available"
-];
+function updateAdmin(){
+  let total=0,max=0,best="None";
+  for(let k in data){
+    total+=data[k];
+    if(data[k]>max){max=data[k];best=k;}
+  }
 
-setInterval(()=>{
-  document.getElementById("headline").innerText=
-  headlines[Math.floor(Math.random()*headlines.length)];
-},5000);
+  document.getElementById("adminTotal").innerText=total;
+  document.getElementById("adminBest").innerText=best;
+  document.getElementById("adminEarn").innerText=(total*0.05).toFixed(2);
+}
+
+function resetData(){
+  localStorage.clear();
+  location.reload();
+}
 
 update();
 </script>
