@@ -6,48 +6,105 @@
 
 <style>
 body{
-margin:0;
-font-family:Arial;
-background:#0f2027;
-color:white;
-text-align:center;
+  margin:0;
+  font-family:Arial;
+  background:#0f2027;
+  color:white;
+  text-align:center;
 }
 
-.top{
-background:red;
-padding:10px;
-font-weight:bold;
+/* HEADER */
+.header{
+  background: linear-gradient(135deg,#00ffcc,#0099ff);
+  padding:30px 15px;
+  border-radius:15px;
+  margin:10px;
 }
 
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
+
+.sub{
+  margin:10px 0;
+}
+
+.cta{
+  display:inline-block;
+  margin-top:10px;
+  padding:12px 20px;
+  background:black;
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:bold;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
+
+/* GRID */
 .grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-padding:10px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:10px;
 }
 
 .btn{
-background:#00ff99;
-padding:15px;
-border-radius:10px;
-text-decoration:none;
-color:black;
-font-weight:bold;
-display:block;
+  background:#00ff99;
+  padding:15px;
+  border-radius:10px;
+  color:black;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* SOCIAL */
+.social{
+  margin-top:20px;
+  padding:15px;
+}
+
+.social a{
+  display:block;
+  margin:5px;
+  padding:10px;
+  background:#222;
+  border-radius:8px;
+  color:white;
+  text-decoration:none;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#00ff99;
+  color:black;
+  padding:10px;
+  border-radius:8px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="top">
-🔥 100% BONUS TODAY – LIMITED OFFER 🔥
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">🔥 Tech Jubair</div>
+  <div class="sub">💸 Earn Daily Bonus Easily</div>
+  <a href="#links" class="cta">🚀 Claim Bonus Now</a>
 </div>
 
-<h2>💸 Claim Your Bonus Now</h2>
-<p>👥 3124 users joined today</p>
-
-<div class="grid">
+<!-- LINKS -->
+<div id="links" class="grid">
 
 <a class="btn" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
 <a class="btn" href="https://jt19234.life/af/BYXru1fL/join">Jeetbuzz</a>
@@ -103,52 +160,43 @@ display:block;
 <a class="btn" href="https://rb777.live/register?ref=LLCSPW">RB777</a>
 <a class="btn" href="https://jw88aff99999.com/af/CW7O4JF1">Joywin</a>
 
+<div class="social">
+<h3>📲 Join Our Community</h3>
+
+<a href="https://facebook.com/groups/yourgroup" target="_blank">
+📘 Facebook Group
+</a>
+
+<a href="https://facebook.com/yourpage" target="_blank">
+👍 Facebook Page
+</a>
+
+<a href="https://www.tiktok.com/@yourusername" target="_blank">
+🎵 TikTok
+</a>
+
+<a href="https://chat.whatsapp.com/yourlink" target="_blank">
+💬 WhatsApp Group
+</a>
+
+<a href="https://t.me/yourchannel" target="_blank">
+📢 Telegram Channel
+</a>
+
 </div>
 
-<p style="color:red;">⏳ Hurry! Offer ending soon</p>
+<!-- POPUP -->
 <script>
-const names = ["rahim2056","karim1920","junaid7063","sakib99","nayeemkdp","hasan582","abulhasan582"];
-const amounts = ["৳5200","৳8000","৳10000","৳15000"];
-
-function showNotification(){
-  let name = names[Math.floor(Math.random()*names.length)];
-  let amount = amounts[Math.floor(Math.random()*amounts.length)];
-
-  let div = document.createElement("div");
-  div.innerHTML = `💸 ${name} just claimed ${amount}`;
-
-  div.style.position = "fixed";
-  div.style.bottom = "20px";
-  div.style.left = "-300px";
-  div.style.background = "#111";
-  div.style.color = "#00ff99";
-  div.style.padding = "12px 20px";
-  div.style.borderRadius = "10px";
-  div.style.boxShadow = "0 0 10px rgba(0,255,150,0.5)";
-  div.style.fontSize = "14px";
-  div.style.transition = "0.5s";
-  div.style.zIndex = "9999";
-
-  document.body.appendChild(div);
-
-  // slide in
-  setTimeout(()=>{
-    div.style.left = "20px";
-  },100);
-
-  // hide
-  setTimeout(()=>{
-    div.style.left = "-300px";
-  },3000);
-
-  // remove
-  setTimeout(()=>{
-    div.remove();
-  },3500);
-}
-
-// repeat
-setInterval(showNotification, 5000);
+const names=["Rahim","Karim","Jubair","Sakib","Nayeem"];
+setInterval(()=>{
+let name=names[Math.floor(Math.random()*names.length)];
+let div=document.createElement("div");
+div.className="popup";
+div.innerHTML="💸 "+name+" just claimed bonus!";
+document.body.appendChild(div);
+setTimeout(()=>div.remove(),3000);
+},5000);
 </script>
+
 </body>
 </html>
