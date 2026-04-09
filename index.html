@@ -7,45 +7,45 @@
 <style>
 body{
   margin:0;
-  font-family:Arial;
-  background:#0f2027;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   color:white;
   text-align:center;
 }
 
 /* HEADER */
 .header{
-  background: linear-gradient(135deg,#00ffcc,#0099ff);
-  padding:30px 15px;
-  border-radius:15px;
+  background:linear-gradient(135deg,#00ffcc,#0099ff);
+  padding:30px;
   margin:10px;
+  border-radius:20px;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:bold;
-}
-
-.sub{
-  margin:10px 0;
-}
+.logo{font-size:26px;font-weight:bold;}
 
 .cta{
   display:inline-block;
   margin-top:10px;
-  padding:12px 20px;
+  padding:12px 25px;
   background:black;
-  color:white;
   border-radius:30px;
+  color:white;
   text-decoration:none;
-  font-weight:bold;
-  animation:pulse 1.5s infinite;
 }
 
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.1);}
-  100%{transform:scale(1);}
+/* DASHBOARD */
+.dashboard{
+  margin:10px;
+  padding:15px;
+  background:#111;
+  border-radius:15px;
+}
+
+.card{
+  margin:5px;
+  padding:10px;
+  background:#222;
+  border-radius:10px;
 }
 
 /* GRID */
@@ -59,16 +59,36 @@ body{
 .btn{
   background:#00ff99;
   padding:15px;
-  border-radius:10px;
+  border-radius:12px;
   color:black;
   text-decoration:none;
   font-weight:bold;
+  transition:0.3s;
+}
+
+.btn:hover{
+  transform:scale(1.05);
+}
+
+/* BEST LINK HIGHLIGHT */
+.best{
+  background:gold !important;
+}
+
+/* ADS */
+.ads{
+  margin:10px;
+  padding:10px;
+  background:#ff0033;
+  border-radius:10px;
 }
 
 /* SOCIAL */
 .social{
-  margin-top:20px;
+  margin:10px;
   padding:15px;
+  background:#111;
+  border-radius:15px;
 }
 
 .social a{
@@ -80,17 +100,6 @@ body{
   color:white;
   text-decoration:none;
 }
-
-/* POPUP */
-.popup{
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:#00ff99;
-  color:black;
-  padding:10px;
-  border-radius:8px;
-}
 </style>
 </head>
 
@@ -98,104 +107,168 @@ body{
 
 <!-- HEADER -->
 <div class="header">
-  <div class="logo">🔥 Tech Jubair</div>
-  <div class="sub">💸 Earn Daily Bonus Easily</div>
-  <a href="#links" class="cta">🚀 Claim Bonus Now</a>
+  <div class="logo" id="headline">🔥 Best Online Bonus Offers</div>
+  <a href="#links" class="cta">🚀 Claim Bonus</a>
 </div>
+
+<!-- DASHBOARD -->
+<div class="dashboard">
+  <div class="card">👆 Total Clicks: <span id="total">0</span></div>
+  <div class="card">🏆 Best Link: <span id="best">None</span></div>
+</div>
+
+<!-- ADS -->
+<div id="ads" class="ads">🔥 Loading Offer...</div>
 
 <!-- LINKS -->
+  <div style="margin:10px;">
+  <button onclick="filterLinks('all')">All</button>
+  <button onclick="filterLinks('popular')">🔥 Popular</button>
+  <button onclick="filterLinks('new')">🆕 New</button>
+  <button onclick="filterLinks('hot')">💸 Hot</button>
+</div>
 <div id="links" class="grid">
 
-<a class="btn" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
-<a class="btn" href="https://jt19234.life/af/BYXru1fL/join">Jeetbuzz</a>
-<a class="btn" href="https://kg899992221aff.com/af/5yhsxzA8/join">Khelaghor</a>
-<a class="btn" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
-<a class="btn" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
+<a class="btn popular" onclick="track('MCW')" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
+<a class="btn popular" onclick="track('Jeetbuzz')" href="https://jt19234.life/af/BYXru1fL/join">Jeetbuzz</a>
+<a class="btn new" onclick="track('Khelaghor')" href="https://kg899992221aff.com/af/5yhsxzA8/join">Khelaghor</a>
+<a class="btn new" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
+<a class="btn new" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
 
-<a class="btn" href="https://www.8mbets.net/bn-bd?aff=bb2ac8bfb3">8Mbet</a>
-<a class="btn" href="https://crix8898822.com/af/C7W6cT8X/join">Mega Cricket</a>
-<a class="btn" href="https://www.e28bd01aff.com/af/92uStlFD/join">E2bet</a>
-<a class="btn" href="https://www.bongo77.live/?af=AG000071">Bongo77</a>
-<a class="btn" href="https://babu88i.com/bn-BD/?af=AG091197">Babu</a>
+<a class="btn" onclick="track('8Mbet')" href="https://www.8mbets.net/bn-bd?aff=bb2ac8bfb3">8Mbet</a>
+<a class="btn hot" onclick="track('Mega Cricket')" href="https://crix8898822.com/af/C7W6cT8X/join">Mega Cricket</a>
+<a class="btn" onclick="track('E2bet')" href="https://www.e28bd01aff.com/af/92uStlFD/join">E2bet</a>
+<a class="btn" onclick="track('Bongo77')" href="https://www.bongo77.live/?af=AG000071">Bongo77</a>
+<a class="btn" onclick="track('Babu')" href="https://babu88i.com/bn-BD/?af=AG091197">Babu</a>
 
-<a class="btn" href="https://mvpviva.club/af/mxto3OJU/join">MVPVIVA</a>
-<a class="btn" href="https://cxsport.vip/af/82AKGQND/join">Crickex</a>
-<a class="btn" href="https://runex88.com/af/2NTJ4ERE/join">Runex88</a>
-<a class="btn" href="https://jeetway.me/af/Lr51QydQ/join">Jeetway</a>
-<a class="btn" href="https://pbc888.club/af/U5JVzV88/join">PBC88</a>
+<a class="btn" onclick="track('MVPVIVA')" href="https://mvpviva.club/af/mxto3OJU/join">MVPVIVA</a>
+<a class="btn" onclick="track('Crickex')" href="https://cxsport.vip/af/82AKGQND/join">Crickex</a>
+<a class="btn" onclick="track('Runex88')" href="https://runex88.com/af/2NTJ4ERE/join">Runex88</a>
+<a class="btn new" onclick="track('Jeetway')" href="https://jeetway.me/af/Lr51QydQ/join">Jeetway</a>
+<a class="btn" onclick="track('PBC88')" href="https://pbc888.club/af/U5JVzV88/join">PBC88</a>
 
-<a class="btn" href="https://rbwelcome.com/af/JRG46KMS/join">Redbaji</a>
-<a class="btn" href="https://betjdb.site/af/1LCosJYd/join">BetJDB</a>
-<a class="btn" href="https://jeetbangla.co/af/d9Uy94s6/join">Jeetbangla</a>
-<a class="btn" href="https://superbaji.fun/af/I1WV38Lv/join">Superbaji</a>
-<a class="btn" href="https://heybaji.fun/af/v6rf50M7/join">Heybaji</a>
+<a class="btn" onclick="track('Redbaji')" href="https://rbwelcome.com/af/JRG46KMS/join">Redbaji</a>
+<a class="btn" onclick="track('BetJDB')" href="https://betjdb.site/af/1LCosJYd/join">BetJDB</a>
+<a class="btn new" onclick="track('Jeetbangla')" href="https://jeetbangla.co/af/d9Uy94s6/join">Jeetbangla</a>
+<a class="btn hot" onclick="track('Superbaji')" href="https://superbaji.fun/af/I1WV38Lv/join">Superbaji</a>
+<a class="btn" onclick="track('Heybaji')" href="https://heybaji.fun/af/v6rf50M7/join">Heybaji</a>
 
-<a class="btn" href="https://darazplay.fun/af/poO4Tj3H/join">Darazplay</a>
-<a class="btn" href="https://kv8.online/af/77v2NiUA/join">KV8</a>
-<a class="btn" href="https://tb08p27aff2025.com/af/e393P3gY/join">Tekkabuzz</a>
-<a class="btn" href="https://7starcasino.live/signup/V5tLAGrIhUAIi-iJ03PBNaa-4gwPoyX0R5Ihdfh--BU=">7Star</a>
-<a class="btn" href="https://mostplayipl.club/af/57wDvcOa/join">Mostplay</a>
+<a class="btn" onclick="track('Darazplay')" href="https://darazplay.fun/af/poO4Tj3H/join">Darazplay</a>
+<a class="btn" onclick="track('KV8')" href="https://kv8.online/af/77v2NiUA/join">KV8</a>
+<a class="btn hot" onclick="track('Tekkabuzz')" href="https://tb08p27aff2025.com/af/e393P3gY/join">Tekkabuzz</a>
 
-<a class="btn" href="https://6s03p14aff2025.com/af/8Iy6b1K8/join">Six6s</a>
-<a class="btn" href="https://bv88visa.com/af/O2PV29mr/join">Betvisa</a>
-<a class="btn" href="https://jeetwinfun.com/af/2eenp13b/join">Jeetwin</a>
-<a class="btn" href="https://www.baji10x.com/affiliate_code?affiliate_code=5XTnntVuNJ">Baji10x</a>
-<a class="btn" href="https://365pari.com/ref/587669416">365Pari</a>
+<a class="btn" onclick="track('7Star')" href="https://7starcasino.live/signup/V5tLAGrIhUAIi-iJ03PBNaa-4gwPoyX0R5Ihdfh--BU=">7Star</a>
+<a class="btn" onclick="track('Mostplay')" href="https://mostplayipl.club/af/57wDvcOa/join">Mostplay</a>
 
-<a class="btn" href="https://www.mamubaji.co/bn-bd/register?aff=90538c578b">Mamubaji</a>
-<a class="btn" href="http://www.club99bdt.com/Register/0231d2aeb4fca4b96169aee24c5c8f7567e42b1d031ef">Club99</a>
-<a class="btn" href="https://upodx.wicket71bd.com/register.html">Wicket71</a>
-<a class="btn" href="https://bh05p12aff2025.com/af/E1e3Hv3d/join">Bagh</a>
-<a class="btn" href="https://4six.com/m/#/?creation_code=1000011068">4Six</a>
+<a class="btn" onclick="track('Six6s')" href="https://6s03p14aff2025.com/af/8Iy6b1K8/join">Six6s</a>
+<a class="btn popular" onclick="track('Betvisa')" href="https://bv88visa.com/af/O2PV29mr/join">Betvisa</a>
+<a class="btn popular" onclick="track('Jeetwin')" href="https://jeetwinfun.com/af/2eenp13b/join">Jeetwin</a>
+<a class="btn" onclick="track('Baji10x')" href="https://www.baji10x.com/affiliate_code?affiliate_code=5XTnntVuNJ">Baji10x</a>
+<a class="btn" onclick="track('365Pari')" href="https://365pari.com/ref/587669416">365Pari</a>
 
-<a class="btn" href="https://tkbzi99999aff.com/af/bu1jOesM/join">Tkbazi</a>
-<a class="btn" href="https://bajiplay88.com#/register?ref=AFF2261867E63A57">Bajiplay88</a>
-<a class="btn" href="https://nagabaji9.com/r/1UzN1ITMwADM">Nagabaji</a>
-<a class="btn" href="https://winraj.com/register?agent=6824ce12">Winraj</a>
-<a class="btn" href="https://nazmasultana.crownbd.me/register.html">Crownbd</a>
+<a class="btn" onclick="track('Mamubaji')" href="https://www.mamubaji.co/bn-bd/register?aff=90538c578b">Mamubaji</a>
+<a class="btn" onclick="track('Club99')" href="http://www.club99bdt.com/Register/0231d2aeb4fca4b96169aee24c5c8f7567e42b1d031ef">Club99</a>
+<a class="btn" onclick="track('Wicket71')" href="https://upodx.wicket71bd.com/register.html">Wicket71</a>
+<a class="btn new" onclick="track('Bagh')" href="https://bh05p12aff2025.com/af/E1e3Hv3d/join">Bagh</a>
+<a class="btn" onclick="track('4Six')" href="https://4six.com/m/#/?creation_code=1000011068">4Six</a>
 
-<a class="btn" href="https://bnplus8999aff.com/af/qIo5EGu8/join">Banglaplus88</a>
-<a class="btn" href="https://juwabd.com/af/38q9Hf9r/join">Fencywin</a>
-<a class="btn" href="https://darazbaji.com/player/signup.php?ref=AGT0022">Darazbaji</a>
-<a class="btn" href="https://rb777.live/register?ref=LLCSPW">RB777</a>
-<a class="btn" href="https://jw88aff99999.com/af/CW7O4JF1">Joywin</a>
+<a class="btn" onclick="track('Tkbazi')" href="https://tkbzi99999aff.com/af/bu1jOesM/join">Tkbazi</a>
+<a class="btn" onclick="track('Bajiplay88')" href="https://bajiplay88.com#/register?ref=AFF2261867E63A57">Bajiplay88</a>
+<a class="btn" onclick="track('Nagabaji')" href="https://nagabaji9.com/r/1UzN1ITMwADM">Nagabaji</a>
+<a class="btn" onclick="track('Winraj')" href="https://winraj.com/register?agent=6824ce12">Winraj</a>
+<a class="btn" onclick="track('Crownbd')" href="https://nazmasultana.crownbd.me/register.html">Crownbd</a>
 
-<div class="social">
-<h3>📲 Join Our Community</h3>
-
-<a href="https://facebook.com/groups/yourgroup" target="_blank">
-📘 Facebook Group
-</a>
-
-<a href="https://facebook.com/yourpage" target="_blank">
-👍 Facebook Page
-</a>
-
-<a href="https://www.tiktok.com/@yourusername" target="_blank">
-🎵 TikTok
-</a>
-
-<a href="https://chat.whatsapp.com/yourlink" target="_blank">
-💬 WhatsApp Group
-</a>
-
-<a href="https://t.me/yourchannel" target="_blank">
-📢 Telegram Channel
-</a>
+<a class="btn hot" onclick="track('Banglaplus88')" href="https://bnplus8999aff.com/af/qIo5EGu8/join">Banglaplus88</a>
+<a class="btn" onclick="track('Fencywin')" href="https://juwabd.com/af/38q9Hf9r/join">Fencywin</a>
+<a class="btn" onclick="track('Darazbaji')" href="https://darazbaji.com/player/signup.php?ref=AGT0022">Darazbaji</a>
+<a class="btn" onclick="track('RB777')" href="https://rb777.live/register?ref=LLCSPW">RB777</a>
+<a class="btn" onclick="track('Joywin')" href="https://jw88aff99999.com/af/CW7O4JF1">Joywin</a>
 
 </div>
 
-<!-- POPUP -->
+<!-- SOCIAL -->
+<div class="social">
+<h3>📲 Join Our Community</h3>
+<a href="https://facebook.com/groups/yourgroup" target="_blank">Facebook Group</a>
+<a href="https://facebook.com/yourpage" target="_blank">Facebook Page</a>
+<a href="https://t.me/yourchannel" target="_blank">Telegram</a>
+</div>
+
+<!-- JS -->
 <script>
-const names=["Rahim","Karim","Jubair","Sakib","Nayeem"];
+let data = JSON.parse(localStorage.getItem("clicks")) || {};
+
+function track(name){
+  if(!data[name]) data[name]=0;
+  data[name]++;
+  localStorage.setItem("clicks", JSON.stringify(data));
+  update();
+}
+
+function update(){
+  let total=0,max=0,best="None";
+
+  document.querySelectorAll(".btn").forEach(btn=>btn.classList.remove("best"));
+
+  for(let k in data){
+    total+=data[k];
+    if(data[k]>max){
+      max=data[k];
+      best=k;
+    }
+  }
+
+  document.getElementById("total").innerText=total;
+  document.getElementById("best").innerText=best;
+
+  document.querySelectorAll(".btn").forEach(btn=>{
+    if(btn.innerText===best){
+      btn.classList.add("best");
+    }
+  });
+}
+
+update();
+
+/* AUTO ADS */
+const ads=[
+"🔥 Get 100% Bonus Today",
+"💸 Instant Withdraw Available",
+"🚀 Join & Earn Daily",
+"🎯 Limited Offer – Join Now"
+];
+
 setInterval(()=>{
-let name=names[Math.floor(Math.random()*names.length)];
-let div=document.createElement("div");
-div.className="popup";
-div.innerHTML="💸 "+name+" just claimed bonus!";
-document.body.appendChild(div);
-setTimeout(()=>div.remove(),3000);
+  document.getElementById("ads").innerText=
+  ads[Math.floor(Math.random()*ads.length)];
+},3000);
+
+/* AI HEADLINE (SAFE) */
+const headlines=[
+"🔥 Best Online Bonus Offers",
+"💸 Trusted Earning Platforms",
+"🚀 Join Top Betting Sites",
+"🎯 Daily Bonus Available"
+];
+
+setInterval(()=>{
+  document.getElementById("headline").innerText=
+  headlines[Math.floor(Math.random()*headlines.length)];
 },5000);
+<script>
+function filterLinks(type){
+  let all = document.querySelectorAll(".btn");
+
+  all.forEach(btn=>{
+    btn.style.display = "block";
+
+    if(type !== "all"){
+      if(!btn.classList.contains(type)){
+        btn.style.display = "none";
+      }
+    }
+  });
+}
 </script>
 
 </body>
