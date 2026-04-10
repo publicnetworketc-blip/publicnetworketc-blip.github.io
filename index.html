@@ -21,6 +21,15 @@ body{
   border-radius:20px;
 }
 
+/* PROFILE IMAGE */
+.profile{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  margin-bottom:10px;
+  border:3px solid gold;
+}
+
 /* DASHBOARD */
 .dashboard{
   margin:10px;
@@ -113,30 +122,27 @@ button{
 
 <!-- HEADER -->
 <div class="header">
-🔥 Best Online Bonus Offers
+  <img src="profile.png" class="profile">
+  <h2>🔥 Best Online Bonus Offers</h2>
 </div>
 
 <!-- DASHBOARD -->
 <div class="dashboard">
-<div class="card">Clicks: <span id="total">0</span></div>
-<div class="card">Best: <span id="best">None</span></div>
-<div class="card">Earnings: $<span id="earn">0</span></div>
+  <div class="card">👆 Total Clicks: <span id="total">0</span></div>
+  <div class="card">🏆 Best Link: <span id="best">None</span></div>
 </div>
 
 <!-- FILTER -->
 <div>
-<button onclick="filterLinks('all')">All</button>
-<button onclick="filterLinks('popular')">Popular</button>
-<button onclick="filterLinks('new')">New</button>
-<button onclick="filterLinks('hot')">Hot</button>
+  <button onclick="filterLinks('all')">All</button>
+  <button onclick="filterLinks('popular')">🔥 Popular</button>
+  <button onclick="filterLinks('new')">🆕 New</button>
+  <button onclick="filterLinks('hot')">💸 Hot</button>
 </div>
 
 <!-- LINKS -->
-<div class="grid">
+<div id="links" class="grid">
 
-<a class="btn popular" onclick="track('MCW')" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
-<a class="btn popular" onclick="track('Jeetbuzz')" href="https://jt19234.life/af/BYXru1fL/join">Jeetbuzz</a>
-<a class="btn new" onclick="track('Khelaghor')" href="https://kg899992221aff.com/af/5yhsxzA8/join">Khelaghor</a>
 <a class="btn new" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
 <a class="btn new" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
 
@@ -144,9 +150,7 @@ button{
 <a class="btn hot" onclick="track('Mega Cricket')" href="https://crix8898822.com/af/C7W6cT8X/join">Mega Cricket</a>
 <a class="btn" onclick="track('E2bet')" href="https://www.e28bd01aff.com/af/92uStlFD/join">E2bet</a>
 <a class="btn" onclick="track('Bongo77')" href="https://www.bongo77.live/?af=AG000071">Bongo77</a>
-<a class="btn" onclick="track('Babu')" href="https://babu88i.com/bn-BD/?af=AG091197">Babu</a>
 
-<a class="btn" onclick="track('MVPVIVA')" href="https://mvpviva.club/af/mxto3OJU/join">MVPVIVA</a>
 <a class="btn" onclick="track('Crickex')" href="https://cxsport.vip/af/82AKGQND/join">Crickex</a>
 <a class="btn" onclick="track('Runex88')" href="https://runex88.com/af/2NTJ4ERE/join">Runex88</a>
 <a class="btn new" onclick="track('Jeetway')" href="https://jeetway.me/af/Lr51QydQ/join">Jeetway</a>
@@ -195,31 +199,13 @@ button{
 <h3>🚀 Join Our Community</h3>
 
 <a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" class="social-btn wa">💬 WhatsApp Channel</a>
-
 <a href="https://chat.whatsapp.com/G3GkOzGU7YY8nTXszLhHmz?mode=gi_t" class="social-btn wa">👥 WhatsApp Group</a>
-
 <a href="https://t.me/hotjackpoprotbd" class="social-btn tg">📢 Telegram Channel</a>
-
 <a href="https://www.facebook.com/groups/1264998368916954/?ref=share&mibextid=NSMWBT" class="social-btn fb">📘 Facebook Group</a>
 
-<a href="https://facebook.com/YOUR_PAGE" class="social-btn page">👍 Facebook Page</a>
-
-<a href="https://www.tiktok.com/@YOUR_ID" class="social-btn tk">🎵 TikTok</a>
-
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel">
-<div class="adminBox">
-<h2>Admin Panel</h2>
-<p>Total Click: <span id="adminTotal">0</span></p>
-<p>Best Link: <span id="adminBest">None</span></p>
-<p>Earnings: $<span id="adminEarn">0</span></p>
-<button onclick="closeAdmin()">Close</button>
-<button onclick="resetData()">Reset</button>
-</div>
-</div>
-
+<!-- JS -->
 <script>
 let data = JSON.parse(localStorage.getItem("clicks")) || {};
 
@@ -232,62 +218,30 @@ function track(name){
 
 function update(){
   let total=0,max=0,best="None";
+
   for(let k in data){
     total+=data[k];
-    if(data[k]>max){ max=data[k]; best=k; }
+    if(data[k]>max){
+      max=data[k];
+      best=k;
+    }
   }
+
   document.getElementById("total").innerText=total;
   document.getElementById("best").innerText=best;
-  document.getElementById("earn").innerText=(total*0.05).toFixed(2);
 }
-update();
 
 function filterLinks(type){
-  document.querySelectorAll(".btn").forEach(btn=>{
-    btn.style.display = (type==="all" || btn.classList.contains(type)) ? "block" : "none";
+  let all = document.querySelectorAll(".btn");
+  all.forEach(btn=>{
+    btn.style.display = "block";
+    if(type !== "all" && !btn.classList.contains(type)){
+      btn.style.display = "none";
+    }
   });
 }
 
-/* ADMIN */
-function openAdmin(){
-  document.getElementById("adminPanel").style.display="block";
-  updateAdmin();
-}
-
-function closeAdmin(){
-  document.getElementById("adminPanel").style.display="none";
-}
-
-function updateAdmin(){
-  let total=0,max=0,best="None";
-  for(let k in data){
-    total+=data[k];
-    if(data[k]>max){ max=data[k]; best=k; }
-  }
-  document.getElementById("adminTotal").innerText=total;
-  document.getElementById("adminBest").innerText=best;
-  document.getElementById("adminEarn").innerText=(total*0.05).toFixed(2);
-}
-
-function resetData(){
-  localStorage.clear();
-  location.reload();
-}
-
-/* SECRET ADMIN */
-let clickCount=0;
-document.querySelector(".header").onclick=function(){
-  clickCount++;
-  if(clickCount==5){
-    let pass=prompt("Enter Password");
-    if(pass==="@Nazma2025@"){
-      openAdmin();
-    }else{
-      alert("Wrong Password");
-    }
-    clickCount=0;
-  }
-};
+update();
 </script>
 
 </body>
