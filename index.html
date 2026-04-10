@@ -64,6 +64,13 @@ button{
   font-weight:bold;
 }
 
+/* SECTION TITLE */
+.section-title{
+  margin-top:20px;
+  font-size:18px;
+  color:#00ffcc;
+}
+
 /* SOCIAL */
 .social{
   margin:15px;
@@ -104,6 +111,52 @@ button{
   margin:50px;
   border-radius:15px;
 }
+
+/* ===== PREMIUM GLASS UI ===== */
+
+.header{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+.card{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.btn{
+  background: rgba(0,255,153,0.2);
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(0,255,153,0.3);
+  color:#00ffcc;
+}
+
+.btn:hover{
+  background:#00ffcc;
+  color:black;
+  transform:scale(1.05);
+  box-shadow:0 0 15px #00ffcc;
+}
+
+.social{
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.social-btn{
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(255,255,255,0.2);
+}
+
+.adminBox{
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(15px);
+  border:1px solid rgba(255,255,255,0.2);
+}
+  
 </style>
 </head>
 
@@ -130,9 +183,13 @@ button{
 <button onclick="filterLinks('hot')">💸 Hot</button>
 </div>
 
-<!-- LINKS -->
+<!-- ================= AFFILIATE SECTION ================= -->
+
+<div class="section-title">🔥 All Affiliate Links</div>
+
 <div id="links" class="grid">
 
+<!-- ALL LINKS -->
 <a class="btn popular" onclick="track('MCW')" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
 <a class="btn new" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
 <a class="btn new" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
@@ -188,9 +245,16 @@ button{
 <!-- SOCIAL -->
 <div class="social">
 <h3>Join Community</h3>
-<a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" class="social-btn wa">WhatsApp</a>
-<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">Telegram</a>
+
+<a href="https://www.facebook.com/share/1Dig4KkgpF/" class="social-btn page">👍 Facebook Page</a>
 <a href="https://www.facebook.com/groups/1264998368916954/" class="social-btn fb">Facebook Group</a>
+
+<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">Telegram Channel</a>
+<a href="https://t.me/YOUR_TELEGRAM_GROUP" class="social-btn tg">Telegram Group</a>
+
+<a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" class="social-btn wa">WhatsApp Channel</a>
+<a href="https://chat.whatsapp.com/G3GkOzGU7YY8nTXszLhHmz" class="social-btn wa">WhatsApp Group</a>
+
 </div>
 
 <!-- ADMIN PANEL -->
@@ -202,7 +266,6 @@ button{
 </div>
 </div>
 
-<!-- JS -->
 <script>
 let totalClicks = localStorage.getItem("totalClicks") || 0;
 let bestLink = localStorage.getItem("bestLink") || "None";
@@ -243,13 +306,12 @@ function filterLinks(cat){
   });
 }
 
-/* ADMIN */
 let clicksCount=0;
 function openAdminTrigger(){
   clicksCount++;
   if(clicksCount>=5){
     let pass=prompt("Enter Password");
-    if(pass==="1234"){
+    if(pass==="@Nazma2025@"){
       document.getElementById("adminPanel").style.display="block";
     }
     clicksCount=0;
