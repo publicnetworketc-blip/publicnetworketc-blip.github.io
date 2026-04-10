@@ -140,8 +140,8 @@ button{
 
 <!-- DASHBOARD -->
 <div class="dashboard">
-  <div class="card">👆 Total Clicks: <span id="total">0</span></div>
-  <div class="card">🏆 Best Link: <span id="best">None</span></div>
+<div class="card">☝️ Total Clicks: <span id="total">0</span></div>
+<div class="card">🏆 Best Link: <span id="best">None</span></div>
 </div>
 
 <!-- FILTER -->
@@ -225,41 +225,35 @@ button{
 
 <!-- JS -->
 <script>
-let data = JSON.parse(localStorage.getItem("clicks")) || {};
+let totalClicks = localStorage.getItem("totalClicks") || 0;
+let bestLink = localStorage.getItem("bestLink") || "None";
+let clicks = JSON.parse(localStorage.getItem("clicks")) || {};
 
-function track(name){
-  if(!data[name]) data[name]=0;
-  data[name]++;
-  localStorage.setItem("clicks", JSON.stringify(data));
-  update();
+function updateUI(){
+  document.getElementById("total").innerText = totalClicks;
+  document.getElementById("best").innerText = bestLink;
 }
 
-function update(){
-  let total=0,max=0,best="None";
+function track(name){
+  totalClicks++;
+  clicks[name] = (clicks[name] || 0) + 1;
 
-  for(let k in data){
-    total+=data[k];
-    if(data[k]>max){
-      max=data[k];
-      best=k;
+  let max = 0;
+  for(let key in clicks){
+    if(clicks[key] > max){
+      max = clicks[key];
+      bestLink = key;
     }
   }
 
-  document.getElementById("total").innerText=total;
-  document.getElementById("best").innerText=best;
+  localStorage.setItem("totalClicks", totalClicks);
+  localStorage.setItem("clicks", JSON.stringify(clicks));
+  localStorage.setItem("bestLink", bestLink);
+
+  updateUI();
 }
 
-function filterLinks(type){
-  let all = document.querySelectorAll(".btn");
-  all.forEach(btn=>{
-    btn.style.display = "block";
-    if(type !== "all" && !btn.classList.contains(type)){
-      btn.style.display = "none";
-    }
-  });
-}
-
-update();
+updateUI();
 </script>
 
 </body>
