@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tech Jubair</title>
+<title>Smart Betting Zone</title>
 
 <style>
-/* BODY */
 body{
   margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  font-family:sans-serif;
+  background:#0f2027;
   color:white;
   text-align:center;
 }
 
 /* HEADER */
 .header{
-  background:linear-gradient(135deg,#00ffcc,#0099ff);
   padding:30px;
-  margin:10px;
+  background:linear-gradient(45deg,#00ffcc,#0077ff);
   border-radius:20px;
-  box-shadow:0 0 20px rgba(0,255,200,0.5);
+  margin:10px;
 }
 
-/* PROFILE IMAGE */
 .profile{
-  width:90px;
-  height:90px;
+  width:100px;
   border-radius:50%;
-  border:3px solid gold;
-  box-shadow:0 0 15px gold;
-  margin-bottom:10px;
-  object-fit:cover;
 }
 
 /* DASHBOARD */
 .dashboard{
   margin:10px;
-  padding:15px;
-  background:#111;
-  border-radius:15px;
 }
 
 .card{
-  margin:5px;
+  background:#111;
   padding:10px;
-  background:#222;
+  margin:5px;
   border-radius:10px;
 }
 
-/* FILTER BUTTON */
+/* BUTTON */
 button{
-  padding:8px 12px;
+  padding:10px;
   margin:5px;
   border:none;
-  border-radius:8px;
+  border-radius:10px;
   background:#00ff99;
   font-weight:bold;
 }
@@ -67,21 +55,13 @@ button{
   padding:10px;
 }
 
-/* BUTTON */
 .btn{
   background:#00ff99;
   padding:15px;
-  border-radius:12px;
-  color:black;
+  border-radius:10px;
   text-decoration:none;
+  color:black;
   font-weight:bold;
-  transition:0.2s;
-}
-
-/* BUTTON HOVER EFFECT */
-.btn:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 10px #00ff99;
 }
 
 /* SOCIAL */
@@ -94,37 +74,34 @@ button{
 
 .social-btn{
   display:block;
-  margin:8px 0;
-  padding:12px;
+  margin:8px;
+  padding:10px;
   border-radius:10px;
   color:white;
   text-decoration:none;
-  font-weight:bold;
 }
 
 .wa{background:#25D366;}
 .tg{background:#0088cc;}
 .fb{background:#1877f2;}
 .page{background:#4267B2;}
-.tk{background:#000;}
 
-/* ADMIN PANEL */
+/* ADMIN */
 #adminPanel{
+  display:none;
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
   background:black;
-  display:none;
   z-index:9999;
-  padding-top:50px;
 }
 
 .adminBox{
   background:#222;
-  margin:20px;
   padding:20px;
+  margin:50px;
   border-radius:15px;
 }
 </style>
@@ -133,23 +110,24 @@ button{
 <body>
 
 <!-- HEADER -->
-<div class="header">
-  <img src="profile.png" class="profile">
-  <h2>🔥 Best Online Bonus Offers</h2>
+<div class="header" onclick="openAdminTrigger()">
+<img src="profile.png" class="profile">
+<h2>🔥 Smart Betting Zone</h2>
 </div>
 
 <!-- DASHBOARD -->
 <div class="dashboard">
-<div class="card">☝️ Total Clicks: <span id="total">0</span></div>
-<div class="card">🏆 Best Link: <span id="best">None</span></div>
+<div class="card">Total Clicks: <span id="total">0</span></div>
+<div class="card">Best Link: <span id="best">None</span></div>
+<div class="card">🔥 Top 5: <div id="top5"></div></div>
 </div>
 
 <!-- FILTER -->
 <div>
-  <button onclick="filterLinks('all')">All</button>
-  <button onclick="filterLinks('popular')">🔥 Popular</button>
-  <button onclick="filterLinks('new')">🆕 New</button>
-  <button onclick="filterLinks('hot')">💸 Hot</button>
+<button onclick="filterLinks('all')">All</button>
+<button onclick="filterLinks('popular')">🔥 Popular</button>
+<button onclick="filterLinks('new')">🆕 New</button>
+<button onclick="filterLinks('hot')">💸 Hot</button>
 </div>
 
 <!-- LINKS -->
@@ -209,18 +187,19 @@ button{
 
 <!-- SOCIAL -->
 <div class="social">
-<h3>🚀 Join Our Community</h3>
+<h3>Join Community</h3>
+<a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" class="social-btn wa">WhatsApp</a>
+<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">Telegram</a>
+<a href="https://www.facebook.com/groups/1264998368916954/" class="social-btn fb">Facebook Group</a>
+</div>
 
-<a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" class="social-btn wa">💬 WhatsApp Channel</a>
-
-<a href="https://chat.whatsapp.com/G3GkOzGU7YY8nTXszLhHmz?mode=gi_t" class="social-btn wa">👥 WhatsApp Group</a>
-
-<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">📢 Telegram Channel</a>
-
-<a href="https://www.facebook.com/groups/1264998368916954/?ref=share&mibextid=NSMWBT" class="social-btn fb">📘 Facebook Group</a>
-
-<a href="https://www.facebook.com/share/1Dig4KkgpF/" class="social-btn page">👍 Facebook Page</a>
-
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+<div class="adminBox">
+<h2>Admin Panel</h2>
+<button onclick="resetData()">Reset Data</button>
+<button onclick="closeAdmin()">Close</button>
+</div>
 </div>
 
 <!-- JS -->
@@ -232,17 +211,22 @@ let clicks = JSON.parse(localStorage.getItem("clicks")) || {};
 function updateUI(){
   document.getElementById("total").innerText = totalClicks;
   document.getElementById("best").innerText = bestLink;
+
+  let sorted = Object.entries(clicks).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  let html="";
+  sorted.forEach(i=> html += i[0]+" ("+i[1]+")<br>");
+  document.getElementById("top5").innerHTML = html;
 }
 
 function track(name){
   totalClicks++;
-  clicks[name] = (clicks[name] || 0) + 1;
+  clicks[name]=(clicks[name]||0)+1;
 
-  let max = 0;
-  for(let key in clicks){
-    if(clicks[key] > max){
-      max = clicks[key];
-      bestLink = key;
+  let max=0;
+  for(let k in clicks){
+    if(clicks[k]>max){
+      max=clicks[k];
+      bestLink=k;
     }
   }
 
@@ -251,6 +235,34 @@ function track(name){
   localStorage.setItem("bestLink", bestLink);
 
   updateUI();
+}
+
+function filterLinks(cat){
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.style.display = (cat==="all" || btn.classList.contains(cat)) ? "block":"none";
+  });
+}
+
+/* ADMIN */
+let clicksCount=0;
+function openAdminTrigger(){
+  clicksCount++;
+  if(clicksCount>=5){
+    let pass=prompt("Enter Password");
+    if(pass==="1234"){
+      document.getElementById("adminPanel").style.display="block";
+    }
+    clicksCount=0;
+  }
+}
+
+function closeAdmin(){
+  document.getElementById("adminPanel").style.display="none";
+}
+
+function resetData(){
+  localStorage.clear();
+  location.reload();
 }
 
 updateUI();
