@@ -5,6 +5,7 @@
 <title>Tech Jubair</title>
 
 <style>
+/* BODY */
 body{
   margin:0;
   font-family:'Segoe UI',sans-serif;
@@ -19,15 +20,18 @@ body{
   padding:30px;
   margin:10px;
   border-radius:20px;
+  box-shadow:0 0 20px rgba(0,255,200,0.5);
 }
 
 /* PROFILE IMAGE */
 .profile{
-  width:80px;
-  height:80px;
+  width:90px;
+  height:90px;
   border-radius:50%;
-  margin-bottom:10px;
   border:3px solid gold;
+  box-shadow:0 0 15px gold;
+  margin-bottom:10px;
+  object-fit:cover;
 }
 
 /* DASHBOARD */
@@ -63,6 +67,7 @@ button{
   padding:10px;
 }
 
+/* BUTTON */
 .btn{
   background:#00ff99;
   padding:15px;
@@ -70,6 +75,13 @@ button{
   color:black;
   text-decoration:none;
   font-weight:bold;
+  transition:0.2s;
+}
+
+/* BUTTON HOVER EFFECT */
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 10px #00ff99;
 }
 
 /* SOCIAL */
