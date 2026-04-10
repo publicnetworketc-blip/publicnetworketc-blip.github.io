@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Betting Zone</title>
 
 <style>
@@ -9,187 +10,137 @@ body{
   font-family:sans-serif;
   background:#0f2027;
   color:white;
-  text-align:center;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 .header{
-  padding:30px;
-  background:linear-gradient(45deg,#00ffcc,#0077ff);
-  border-radius:20px;
-  margin:10px;
+  padding:20px;
+  text-align:center;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
 }
 
 .profile{
-  width:100px;
+  width:80px;
   border-radius:50%;
 }
 
-/* DASHBOARD */
+/* ===== DASHBOARD ===== */
 .dashboard{
-  margin:10px;
+  display:flex;
+  justify-content:space-around;
+  padding:10px;
 }
 
 .card{
-  background:#111;
   padding:10px;
-  margin:5px;
-  border-radius:10px;
+  border-radius:12px;
+  background: rgba(255,255,255,0.08);
+  text-align:center;
+  width:30%;
 }
 
-/* BUTTON */
-button{
-  padding:10px;
-  margin:5px;
-  border:none;
-  border-radius:10px;
-  background:#00ff99;
-  font-weight:bold;
-}
-
-/* GRID */
+/* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:10px;
   padding:10px;
 }
 
+/* ===== APP CARD BUTTON ===== */
 .btn{
-  background:#00ff99;
-  padding:15px;
-  border-radius:10px;
-  text-decoration:none;
-  color:black;
-  font-weight:bold;
-}
-
-/* SECTION TITLE */
-.section-title{
-  margin-top:20px;
-  font-size:18px;
-  color:#00ffcc;
-}
-
-/* SOCIAL */
-.social{
-  margin:15px;
-  padding:20px;
-  background:#111;
+  padding:15px 10px;
   border-radius:15px;
-}
-
-.social-btn{
-  display:block;
-  margin:8px;
-  padding:10px;
-  border-radius:10px;
-  color:white;
+  text-align:center;
   text-decoration:none;
-}
-
-.wa{background:#25D366;}
-.tg{background:#0088cc;}
-.fb{background:#1877f2;}
-.page{background:#4267B2;}
-
-/* ADMIN */
-#adminPanel{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:black;
-  z-index:9999;
-}
-
-.adminBox{
-  background:#222;
-  padding:20px;
-  margin:50px;
-  border-radius:15px;
-}
-
-/* ===== PREMIUM GLASS UI ===== */
-
-.header{
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  border:1px solid rgba(255,255,255,0.2);
-}
-
-.card{
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  border:1px solid rgba(255,255,255,0.15);
-}
-
-.btn{
-  background: rgba(0,255,153,0.2);
-  backdrop-filter: blur(10px);
+  font-size:14px;
+  background: rgba(0,255,153,0.15);
   border:1px solid rgba(0,255,153,0.3);
   color:#00ffcc;
+  transition:0.3s;
 }
 
 .btn:hover{
   background:#00ffcc;
   color:black;
   transform:scale(1.05);
-  box-shadow:0 0 15px #00ffcc;
 }
 
+/* BEST */
+.best{
+  background:gold !important;
+  color:black !important;
+}
+
+/* ===== SOCIAL ===== */
 .social{
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border:1px solid rgba(255,255,255,0.15);
+  padding:15px;
 }
 
 .social-btn{
-  backdrop-filter: blur(10px);
-  border:1px solid rgba(255,255,255,0.2);
+  display:block;
+  margin:8px 0;
+  padding:12px;
+  border-radius:10px;
+  text-decoration:none;
+  color:white;
 }
 
-.adminBox{
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(15px);
-  border:1px solid rgba(255,255,255,0.2);
+.fb{background:#1877f2;}
+.tg{background:#0088cc;}
+.wa{background:#25D366;}
+
+/* ===== BOTTOM NAV ===== */
+.nav{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  background:#111;
+  padding:10px;
 }
-  
+
+.nav button{
+  background:none;
+  border:none;
+  color:white;
+  font-size:16px;
+}
+
+/* ===== POPUP ===== */
+.popup{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#111;
+  padding:15px;
+  display:none;
+  text-align:center;
+}
 </style>
 </head>
 
 <body>
 
 <!-- HEADER -->
-<div class="header" onclick="openAdminTrigger()">
+<div class="header">
 <img src="profile.png" class="profile">
 <h2>🔥 Smart Betting Zone</h2>
 </div>
 
 <!-- DASHBOARD -->
 <div class="dashboard">
-<div class="card">Total Clicks: <span id="total">0</span></div>
-<div class="card">Best Link: <span id="best">None</span></div>
-<div class="card">🔥 Top 5: <div id="top5"></div></div>
+<div class="card">Clicks<br><span id="total">0</span></div>
+<div class="card">Best<br><span id="best">None</span></div>
+<div class="card">Top 5<br><span id="top5"></span></div>
 </div>
 
-<!-- FILTER -->
-<div>
-<button onclick="filterLinks('all')">All</button>
-<button onclick="filterLinks('popular')">🔥 Popular</button>
-<button onclick="filterLinks('new')">🆕 New</button>
-<button onclick="filterLinks('hot')">💸 Hot</button>
-</div>
-
-<!-- ================= AFFILIATE SECTION ================= -->
-
-<div class="section-title">🔥 All Affiliate Links</div>
-
+<!-- LINKS -->
 <div id="links" class="grid">
 
-<!-- ALL LINKS -->
+<!-- ALL AFFILIATE LINKS -->
 <a class="btn popular" onclick="track('MCW')" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
 <a class="btn new" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
 <a class="btn new" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
@@ -222,48 +173,28 @@ button{
 <a class="btn" onclick="track('Baji10x')" href="https://www.baji10x.com/affiliate_code?affiliate_code=5XTnntVuNJ">Baji10x</a>
 <a class="btn" onclick="track('365Pari')" href="https://365pari.com/ref/587669416">365Pari</a>
 
-<a class="btn" onclick="track('Mamubaji')" href="https://www.mamubaji.co/bn-bd/register?aff=90538c578b">Mamubaji</a>
-<a class="btn" onclick="track('Club99')" href="http://www.club99bdt.com/Register/0231d2aeb4fca4b96169aee24c5c8f7567e42b1d031ef">Club99</a>
-<a class="btn" onclick="track('Wicket71')" href="https://upodx.wicket71bd.com/register.html">Wicket71</a>
-<a class="btn new" onclick="track('Bagh')" href="https://bh05p12aff2025.com/af/E1e3Hv3d/join">Bagh</a>
-<a class="btn" onclick="track('4Six')" href="https://4six.com/m/#/?creation_code=1000011068">4Six</a>
-
-<a class="btn" onclick="track('Tkbazi')" href="https://tkbzi99999aff.com/af/bu1jOesM/join">Tkbazi</a>
-<a class="btn" onclick="track('Bajiplay88')" href="https://bajiplay88.com#/register?ref=AFF2261867E63A57">Bajiplay88</a>
-<a class="btn" onclick="track('Nagabaji')" href="https://nagabaji9.com/r/1UzN1ITMwADM">Nagabaji</a>
-<a class="btn" onclick="track('Winraj')" href="https://winraj.com/register?agent=6824ce12">Winraj</a>
-<a class="btn" onclick="track('Crownbd')" href="https://nazmasultana.crownbd.me/register.html">Crownbd</a>
-
-<a class="btn hot" onclick="track('Banglaplus88')" href="https://bnplus8999aff.com/af/qIo5EGu8/join">Banglaplus88</a>
-<a class="btn" onclick="track('Fencywin')" href="https://juwabd.com/af/38q9Hf9r/join">Fencywin</a>
-<a class="btn" onclick="track('Darazbaji')" href="https://darazbaji.com/player/signup.php?ref=AGT0022">Darazbaji</a>
-<a class="btn" onclick="track('RB777')" href="https://rb777.live/register?ref=LLCSPW">RB777</a>
-<a class="btn" onclick="track('Joywin')" href="https://jw88aff99999.com/af/CW7O4JF1">Joywin</a>
-
 </div>
 
 <!-- SOCIAL -->
 <div class="social">
-<h3>Join Community</h3>
-
-<a href="https://www.facebook.com/share/1Dig4KkgpF/" class="social-btn page">👍 Facebook Page</a>
-<a href="https://www.facebook.com/groups/1264998368916954/" class="social-btn fb">Facebook Group</a>
-
-<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">Telegram Channel</a>
-<a href="https://t.me/YOUR_TELEGRAM_GROUP" class="social-btn tg">Telegram Group</a>
-
-<a href="https://whatsapp.com/channel/0029VaLgeiK6BIEgLyTOz30N" class="social-btn wa">WhatsApp Channel</a>
-<a href="https://chat.whatsapp.com/G3GkOzGU7YY8nTXszLhHmz" class="social-btn wa">WhatsApp Group</a>
-
+<a href="https://www.facebook.com/share/1Dig4KkgpF/" class="social-btn fb">Facebook</a>
+<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">Telegram</a>
+<a href="https://chat.whatsapp.com/G3GkOzGU7YY8nTXszLhHmz" class="social-btn wa">WhatsApp</a>
 </div>
 
-<!-- ADMIN PANEL -->
-<div id="adminPanel">
-<div class="adminBox">
-<h2>Admin Panel</h2>
-<button onclick="resetData()">Reset Data</button>
-<button onclick="closeAdmin()">Close</button>
+<!-- NAV -->
+<div class="nav">
+<button onclick="filterLinks('all')">🏠</button>
+<button onclick="filterLinks('popular')">🔥</button>
+<button onclick="filterLinks('new')">🆕</button>
+<button onclick="openPopup()">💬</button>
 </div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+Join Telegram & WhatsApp 🚀  
+<br><br>
+<button onclick="closePopup()">Close</button>
 </div>
 
 <script>
@@ -277,8 +208,15 @@ function updateUI(){
 
   let sorted = Object.entries(clicks).sort((a,b)=>b[1]-a[1]).slice(0,5);
   let html="";
-  sorted.forEach(i=> html += i[0]+" ("+i[1]+")<br>");
+  sorted.forEach(i=> html += i[0]+"<br>");
   document.getElementById("top5").innerHTML = html;
+
+  document.querySelectorAll(".btn").forEach(btn=>{
+    btn.classList.remove("best");
+    if(btn.innerText === bestLink){
+      btn.classList.add("best");
+    }
+  });
 }
 
 function track(name){
@@ -306,25 +244,11 @@ function filterLinks(cat){
   });
 }
 
-let clicksCount=0;
-function openAdminTrigger(){
-  clicksCount++;
-  if(clicksCount>=5){
-    let pass=prompt("Enter Password");
-    if(pass==="@Nazma2025@"){
-      document.getElementById("adminPanel").style.display="block";
-    }
-    clicksCount=0;
-  }
+function openPopup(){
+  document.getElementById("popup").style.display="block";
 }
-
-function closeAdmin(){
-  document.getElementById("adminPanel").style.display="none";
-}
-
-function resetData(){
-  localStorage.clear();
-  location.reload();
+function closePopup(){
+  document.getElementById("popup").style.display="none";
 }
 
 updateUI();
