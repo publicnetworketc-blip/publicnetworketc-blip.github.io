@@ -10,6 +10,7 @@ body{
   font-family:sans-serif;
   background:#0f2027;
   color:white;
+  padding-bottom:80px;
 }
 
 /* HEADER */
@@ -90,19 +91,16 @@ body{
   width:90%;
   display:flex;
   justify-content:space-around;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(15px);
-  border-radius:20px;
+
+  background: transparent;   /* ❌ no background */
+  backdrop-filter: none;     /* ❌ no blur */
+
   padding:10px;
 }
 .nav button{
-  background:transparent;
-  border:none;
-  font-size:22px;
-  color:#00ffcc;
-}
-.nav button.active{
-  color:gold;
+  background: rgba(0,255,204,0.1);
+  border-radius:50%;
+  padding:10px;
 }
 
 /* POPUP */
