@@ -48,7 +48,7 @@ body{
   padding:10px;
 }
 
-/* ===== APP CARD BUTTON ===== */
+/* ===== BUTTON ===== */
 .btn{
   padding:15px 10px;
   border-radius:15px;
@@ -91,22 +91,43 @@ body{
 .tg{background:#0088cc;}
 .wa{background:#25D366;}
 
-/* ===== BOTTOM NAV ===== */
+/* ===== FLOATING NAV (UPDATED) ===== */
 .nav{
   position:fixed;
-  bottom:0;
-  width:100%;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
   display:flex;
   justify-content:space-around;
-  background:#111;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
   padding:10px;
+
+  box-shadow:0 0 15px rgba(0,255,204,0.2);
 }
 
+/* ===== NAV BUTTON ===== */
 .nav button{
-  background:none;
+  background: transparent;
   border:none;
-  color:white;
-  font-size:16px;
+  font-size:22px;
+  color:#00ffcc;
+  transition:0.3s;
+}
+
+/* HOVER */
+.nav button:hover{
+  transform:scale(1.3);
+  color:#00ffff;
+}
+
+/* ACTIVE */
+.nav button.active{
+  color:gold;
+  transform:scale(1.3);
 }
 
 /* ===== POPUP ===== */
@@ -140,7 +161,7 @@ body{
 <!-- LINKS -->
 <div id="links" class="grid">
 
-<!-- ALL AFFILIATE LINKS -->
+<!-- ALL LINKS (same as before) -->
 <a class="btn popular" onclick="track('MCW')" href="https://mcw85229381aff.com/af/fVz9AS41/join">MCW</a>
 <a class="btn new" onclick="track('Banglaslot')" href="https://bslotsaff99889.com/af/8zjIDxuO/join">Banglaslot</a>
 <a class="btn new" onclick="track('Banglabet')" href="https://bbaff922988182.com/af/irGXrDjZ/join">Banglabet</a>
@@ -175,19 +196,12 @@ body{
 
 </div>
 
-<!-- SOCIAL -->
-<div class="social">
-<a href="https://www.facebook.com/share/1Dig4KkgpF/" class="social-btn fb">Facebook</a>
-<a href="https://t.me/hotjackpoprotbd" class="social-btn tg">Telegram</a>
-<a href="https://chat.whatsapp.com/G3GkOzGU7YY8nTXszLhHmz" class="social-btn wa">WhatsApp</a>
-</div>
-
 <!-- NAV -->
 <div class="nav">
-<button onclick="filterLinks('all')">🏠</button>
-<button onclick="filterLinks('popular')">🔥</button>
-<button onclick="filterLinks('new')">🆕</button>
-<button onclick="openPopup()">💬</button>
+<button onclick="filterLinks('all');setActive(this)">🏠</button>
+<button onclick="filterLinks('popular');setActive(this)">🔥</button>
+<button onclick="filterLinks('new');setActive(this)">🆕</button>
+<button onclick="openPopup();setActive(this)">💬</button>
 </div>
 
 <!-- POPUP -->
@@ -244,6 +258,13 @@ function filterLinks(cat){
   });
 }
 
+/* ACTIVE BUTTON */
+function setActive(el){
+  document.querySelectorAll(".nav button").forEach(btn=>btn.classList.remove("active"));
+  el.classList.add("active");
+}
+
+/* POPUP */
 function openPopup(){
   document.getElementById("popup").style.display="block";
 }
