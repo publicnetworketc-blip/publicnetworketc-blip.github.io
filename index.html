@@ -106,7 +106,7 @@ button{
 <div class="card">Earnings: $<span id="earn">0</span></div>
 </div>
 
-<button onclick="openAdmin()">⚙️ Admin Panel</button>
+
 
 <!-- FILTER -->
 <div>
@@ -260,6 +260,21 @@ function resetData(){
 }
 
 update();
+  let clickCount = 0;
+
+document.querySelector(".header").onclick = function(){
+  clickCount++;
+
+  if(clickCount == 5){
+    let pass = prompt("Enter Admin Password");
+    if(pass === "1234"){
+      openAdmin();
+    }else{
+      alert("Wrong Password");
+    }
+    clickCount = 0;
+  }
+};
 </script>
 
 </body>
